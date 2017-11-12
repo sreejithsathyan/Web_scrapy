@@ -27,4 +27,7 @@ while True:
 print len(list1)
 
 for x in list1:
-	print x
+	#print x
+	soup = BeautifulSoup(urllib2.urlopen(x))
+	print soup.title.text
+	
