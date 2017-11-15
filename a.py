@@ -60,18 +60,6 @@ for adr in soup.findAll("div", { "class" : "detail" }):
 
 	
 	print r[2].text
-
-#fetch latitude and longitude
-
-
-from geopy.geocoders import Nominatim
-geolocator = Nominatim()
-
-
-location = geolocator.geocode(adrr)
-#print(location.address)
-print((location.latitude, location.longitude))
-
 # decription
 
 r = requests.get(url)
@@ -86,3 +74,16 @@ for adr in soup.findAll("div", { "property" : "schema:description" }):
 	print ("Decription")
 	dec= adr.text
 	print dec.lstrip(" ")
+	
+#fetch latitude and longitude
+
+
+from geopy.geocoders import Nominatim
+geolocator = Nominatim()
+
+
+location = geolocator.geocode(adrr)
+#print(location.address)
+print((location.latitude, location.longitude))
+
+
