@@ -72,6 +72,17 @@ location = geolocator.geocode(adrr)
 #print(location.address)
 print((location.latitude, location.longitude))
 
+# decription
 
+r = requests.get(url)
 
+soup = BeautifulSoup(r.text,'lxml')
 
+for adr in soup.findAll("div", { "property" : "schema:description" }):
+ 
+	
+	
+
+	print ("Decription")
+	dec= adr.text
+	print dec.lstrip(" ")
