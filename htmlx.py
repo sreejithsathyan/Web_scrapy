@@ -35,4 +35,4 @@ length=len(list1)
 print ("number of urls:-"),length
 
 for url in list1:
-	#print url
+	print url
