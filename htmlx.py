@@ -1,3 +1,10 @@
+from bs4 import BeautifulSoup
+import requests
+import urllib2
+import re
+
+
+
 import requests
 from BeautifulSoup import BeautifulSoup
 url = "https://allevents.in/new%20delhi/all#"
@@ -24,10 +31,8 @@ while True:
         break
 	f.close()
 # fetch urls from start url
-print len(list1)
+length=len(list1)
+print ("number of urls:-"),length
 
-for x in list1:
-	#print x
-	soup = BeautifulSoup(urllib2.urlopen(x))
-	print soup.title.text
-	
+for url in list1:
+	#print url
