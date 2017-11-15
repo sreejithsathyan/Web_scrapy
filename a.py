@@ -2,12 +2,13 @@ from bs4 import BeautifulSoup
 import requests
 import urllib2
 import re
-import b
+#import b
 
+#for x in list1:
+#	print x
 
-
-url=x
-#url = 'https://allevents.in/new%20delhi/run-for-laadli-a-unique-half-marathon-by-delhi-police/1775805199104598#'
+#url=x
+url = 'https://allevents.in/new%20delhi/expressionism-art-workshop-2017/80006190664762'
 r = requests.get(url)
 soup = BeautifulSoup(r.text,'lxml')
 
@@ -30,24 +31,19 @@ print "Date and Time :- " ,m[1]
 for adr in soup.findAll("div", { "class" : "pd-lr-10 span9" }):
  
 	adrr = adr.find('li', 'toh venue-li').contents[2]
+	adrrr=adrr.lstrip()
+	print "Address:- ", adrrr
 
-	print "Address:- ", adrr.lstrip()
-
+ 
 # Fetch Organizer name
 
-#url = 'https://allevents.in/ahmedabad/rann-utsav-2017-18/2119131864779416#'
 
-r = requests.get(url)
-
-soup = BeautifulSoup(r.text,'lxml')
-# Fetch Organizer name
-"""for adr in soup.findAll("div", { "class" : "name" }):
+for adr in soup.findAll("div", { "class" : "name" }):
  
 	
-	#orginazer = adr.find('span')
-	#print orginazer.split('\n')
-	#org = orginazer.text.lstrip()
-	#print "orgnizer:- ", org """
+	orginazer = adr.find('span')
+
+	print orginazer.text.lstrip()
 
 # Fetch follower count
 for adr in soup.findAll("div", { "class" : "detail" }):
@@ -64,5 +60,18 @@ for adr in soup.findAll("div", { "class" : "detail" }):
 
 	
 	print r[2].text
+
+#fetch latitude and longitude
+
+
+from geopy.geocoders import Nominatim
+geolocator = Nominatim()
+
+
+location = geolocator.geocode(adrr)
+#print(location.address)
+print((location.latitude, location.longitude))
+
+
 
 
